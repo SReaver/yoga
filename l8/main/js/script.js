@@ -44,11 +44,10 @@ window.addEventListener("DOMContentLoaded", function () {
 	let deadline = "2018-11-30";
 
 	function getTimeRemaining(endtime) {
-		let t = Date.parse(endtime) - Date.parse(new Date()),
-			offset = (new Date().getTimezoneOffset() / 60),
+		let t = (Date.parse(endtime) - Date.parse(new Date()) + (new Date().getTimezoneOffset()) * 60 * 1000),
 			seconds = Math.floor((t / 1000) % 60),
 			minutes = Math.floor((t / 1000 / 60) % 60),
-			hours = Math.floor((t / 1000 / 60 / 60) + offset);
+			hours = Math.floor(t / 1000 / 60 / 60);
 		//hours = Math.floor((t / 1000 / 60 / 60) % 24),
 		//days = Math.floor((t/(1000*60*60*24)));
 
