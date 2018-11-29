@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
+	<title>Add2</title>
+</head>
+
+<body>
+	<div class="overlay">
+		<div class="popup popup__call">
+			<form class="popup__call-form" action="#">
+				<div class="popup__call-phoneblock">
+
+
+					<div class="popup__call-phone">
+						<input required data-mask="rus" name="Rus" type="text" placeholder="+7 (___) ___ __ __">
+						<div class="popup__call-wrap">
+							<div class="popup__call-country">РФ</div>
+							<svg class="popup__call-svg" width="22" height="13" viewBox="0 0 22 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M20.2461 2L11.1228 10L1.99951 2" stroke="black" stroke-opacity="0.9" stroke-width="4" />
+							</svg>
+						</div>
+					</div>
+
+
+					<div class="popup__call-phone popup__call-phone-hidden" style="visibility: hidden">
+						<input data-mask="bel" name="Belarus" class="secondCountry" type="text" placeholder="+375 (__) ___ __ __">
+						<div class="popup__call-wrap">
+							<div class="popup__call-country">Беларусь</div>
+							<svg class="popup__call-svg" width="22" height="13" viewBox="0 0 22 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M20.2461 2L11.1228 10L1.99951 2" stroke="black" stroke-opacity="0.9" stroke-width="4" />
+							</svg>
+						</div>
+					</div>
+
+
+
+				</div>
+				<button class="button">Перезвоните мне</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

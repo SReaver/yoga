@@ -1,0 +1,105 @@
+.overlay .popup {
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ -webkit-transform: translateX(-50%) translateY(-50%);
+ transform: translateX(-50%) translateY(-50%)
+}
+
+.overlay .popup__call {
+ display: block;
+ width: 962px;
+ min-height: 410px;
+ background-color: #fff;
+ padding: 140px 96px 100px 96px
+}
+
+.overlay .popup__call-country {
+ height: 60px;
+ display: flex;
+ align-items: center;
+ padding-top: 5px;
+ width: 90px;
+ font-size: 18px;
+ font-weight: 300
+}
+
+.overlay .popup__call-wrap {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ cursor: pointer
+}
+
+.overlay .popup__call-phone {
+ display: flex;
+ justify-content: space-between;
+ align-items: center
+}
+
+.overlay .popup__call-phone:first-child {
+ border-bottom: 1px solid #000
+}
+
+.overlay .popup__call-phone input {
+ display: block;
+ width: 340px;
+ height: 66px;
+ font-size: 35px;
+ letter-spacing: .4px;
+ border: none;
+ padding-left: 10px;
+ font-weight: 300
+}
+
+.overlay .popup__call-phone input::-webkit-input-placeholder {
+ color: #000
+}
+
+.overlay .popup__call-phone input::-ms-input-placeholder {
+ color: #000
+}
+
+.overlay .popup__call-phone input::placeholder {
+ color: #000
+}
+
+.overlay .popup__call-phone-hidden {
+ opacity: .5
+}
+
+.overlay .popup__call-phone-hidden .popup__call-svg {
+ visibility: hidden
+}
+
+.overlay .popup__call-svg {
+ transition: .5s all;
+ height: 60px
+}
+
+.overlay .popup__call-svg-active {
+ -webkit-transform: rotateX(180deg);
+ transform: rotateX(180deg)
+}
+
+.button {
+ display: block;
+ margin: 0 auto;
+ margin-top: 30px;
+ width: 180px;
+ min-height: 42px;
+ line-height: 44px;
+ background-color: #000;
+ font-weight: 700;
+ font-size: 14px;
+ text-align: center;
+ letter-spacing: .5px;
+ text-transform: uppercase;
+ color: #fff !important;
+ cursor: pointer;
+ border: none
+}
+
+* {
+ outline: none
+}
