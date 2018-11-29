@@ -51,7 +51,7 @@ window.addEventListener("DOMContentLoaded", function () {
 			hours = Math.floor((t / 1000 / 60 / 60) + offset);
 		//hours = Math.floor((t / 1000 / 60 / 60) % 24),
 		//days = Math.floor((t/(1000*60*60*24)));
-		console.log(offset);
+
 		return {
 			'total': t,
 			'hours': hours,
