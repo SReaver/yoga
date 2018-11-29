@@ -87,7 +87,7 @@ window.addEventListener("DOMContentLoaded", function () {
 	menu.forEach(function (item) {
 		item.addEventListener("click", function (event) {
 			event.preventDefault();
-			document.querySelector(item.href.substr(this.href.lastIndexOf('/') + 1)).scrollIntoView({
+			document.querySelector(this.href.substr(this.href.lastIndexOf('/') + 1)).scrollIntoView({
 				block: "start",
 				behavior: "smooth"
 			});
