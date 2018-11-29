@@ -82,43 +82,15 @@ window.addEventListener("DOMContentLoaded", function () {
 	}
 	setClock("timer", deadline);
 
-	let menu = document.getElementsByTagName("li");
-	let slider = document.querySelector(".slider");
-	let infoAbout = document.querySelector(".info");
-	let counter = document.querySelector(".counter");
-	let contact = document.querySelector(".contact");
+	let menu = document.querySelectorAll("li a");
 
-	menu[1].addEventListener("click", function (event) {
-		event.preventDefault();
-		slider.scrollIntoView({
-			block: "start",
-			behavior: "smooth"
+	menu.forEach(function (item) {
+		item.addEventListener("click", function (event) {
+			event.preventDefault();
+			document.querySelector(item.href.substr(this.href.lastIndexOf('/') + 1)).scrollIntoView({
+				block: "start",
+				behavior: "smooth"
+			});
 		});
 	});
-
-	menu[0].addEventListener("click", function (event) {
-		event.preventDefault();
-		infoAbout.scrollIntoView({
-			block: "start",
-			behavior: "smooth"
-		});
-	});
-
-	menu[2].addEventListener("click", function (event) {
-		event.preventDefault();
-		counter.scrollIntoView({
-			block: "start",
-			behavior: "smooth"
-		});
-	});
-
-	menu[3].addEventListener("click", function (event) {
-		event.preventDefault();
-		contact.scrollIntoView({
-			block: "start",
-			behavior: "smooth"
-		});
-	});
-
-
 });
