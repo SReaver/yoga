@@ -11,52 +11,8 @@
 </head>
 
 <body>
- <div class="area">
-  <div id="circle"></div>
- </div>
- <script>
-  let circle = document.querySelector("#circle");
-  let currPos = 0;
-  let mul = 1;
-  let brs = 0;
-  let brsMul = 1;
-  let forward = true;
+ <input type="text">
 
-  function step() {
-   currPos = currPos + 1 * mul;
-
-   // if (currPos == 200) {
-   //  brs = 100;
-   //  brsMul = -1;
-   // }
-   //brs += brsMul;
-   if (currPos == 185) {
-    mul = -1;
-   } else if (currPos == 0) {
-    mul = 1;
-   }
-   if (brs <= 50 && forward) {
-    brs++;
-    if (brs == 50) {
-     forward = false;
-    }
-   }
-   if (brs <= 50 && !forward) {
-    brs--;
-    if (brs == 0) {
-     forward = true;
-    }
-   }
-
-   circle.style.left = currPos + "px";
-   circle.style.top = currPos + "px";
-   circle.style.backgroundColor = "#fe3" + currPos;
-   circle.style.transform = 'rotate(' + currPos + 'deg)';
-   circle.style.borderRadius = brs + "px";
-   requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
- </script>
 </body>
 
 </html>
