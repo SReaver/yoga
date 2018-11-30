@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", function () {
 			tabContent[i].classList.remove("show");
 			tabContent[i].classList.add("hide");
 		}
-	}
+	};
 
 	hideTabContent(1);
 
@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", function () {
 			tabContent[b].classList.remove("hide");
 			tabContent[b].classList.add("show");
 		}
-	}
+	};
 
 	//info.addEventListener("click", function (event) {
 	info.addEventListener("click", (event) => {
@@ -44,7 +44,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		} else {
 			return date;
 		}
-	}
+	};
 	let deadline = "2018-12-01";
 
 	//function getTimeRemaining(endtime) {
@@ -62,7 +62,7 @@ window.addEventListener("DOMContentLoaded", function () {
 			'minutes': minutes,
 			'seconds': seconds
 		};
-	}
+	};
 
 	//function setClock(id, endtime) {
 	let setClock = (id, endtime) => {
@@ -86,7 +86,7 @@ window.addEventListener("DOMContentLoaded", function () {
 				seconds.textContent = "00";
 			}
 		}
-	}
+	};
 	setClock("timer", deadline);
 	//Smooth
 	let menu = document.querySelectorAll("li a");
