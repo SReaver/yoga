@@ -19,17 +19,12 @@
   let currPos = 0;
   let mul = 1;
   let brs = 0;
-  let brsMul = 1;
+  //let brsMul = 1;
   let forward = true;
 
   function step() {
    currPos = currPos + 1 * mul;
 
-   // if (currPos == 200) {
-   //  brs = 100;
-   //  brsMul = -1;
-   // }
-   //brs += brsMul;
    if (currPos == 185) {
     mul = -1;
    } else if (currPos == 0) {
