@@ -196,11 +196,27 @@ window.addEventListener("DOMContentLoaded", function () {
 
 			request.addEventListener("readystatechange", function () {
 				if (request.readyState < 4) {
-					statusMessage.innerHTML = message.loading;
+					//statusMessage.innerHTML = message.loading;
+					statusMessage.innerHTML = "";
+					let img = document.createElement("img");
+					img.src = "img/ajax-loader.gif";
+					statusMessage.appendChild(img);
 				} else if (request.readyState == 4 && request.status == 200) {
-					statusMessage.innerHTML = message.success;
+					statusMessage.innerHTML = "";
+					let success = document.createElement("img");
+					success.src = "img/Commons-emblem-success.svg";
+					success.width = 48;
+					success.height = 48;
+					statusMessage.appendChild(success);
 				} else {
-					statusMessage.innerHTML = message.failure;
+					//statusMessage.innerHTML = message.failure;
+					statusMessage.innerHTML = "";
+					let alarm = document.createElement("img");
+					alarm.src = "img/alarmforesthumour.jpg";
+					alarm.width = 200;
+
+					statusMessage.appendChild(alarm);
+
 				}
 			});
 			for (let i = 0; i < input.length; i++) {
