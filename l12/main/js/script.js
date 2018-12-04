@@ -249,8 +249,8 @@ window.addEventListener("DOMContentLoaded", function () {
 			}
 
 			function clearInput() {
-				for (let i = 0; i < input.length; i++) {
-					input[i].value = "";
+				for (let i = 0; i < inputs.length; i++) {
+					inputs[i].value = "";
 				}
 			}
 			postData(formData).then(() => statusMessage.innerHTML = message.loading)

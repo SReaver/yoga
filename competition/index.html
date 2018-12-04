@@ -1,27 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Calc</title>
+    <title>Cars</title>
     <style>
-        label {
-            display: block;
-            font-size: 30px;
+        .choose {
+            display:flex;
+            flex-direction: column;
         }
-        input {
-            width: 300px;
-            height: 50px;
-            font-size: 30px;
+        .cars {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .car {
+            border: 1px solid grey;
+            width: 200px;
+            height: 150px;
         }
     </style>
 </head>
+
 <body>
-    <label for="rub">RUB</label>
-    <input id="rub" type="text">
-    <label for="usd">USD</label>
-    <input id="usd" type="text">
+    <div class="choose">
+        <div>
+            <label for="germany">Германия</label>
+            <input type="checkbox" name="germany" id="germany">
+        </div>
+        <div>
+            <label for="italian">Италия</label>
+            <input type="checkbox" name="italian" id="italian">
+        </div>
+        <div>
+            <label for="france">Франция</label>
+            <input type="checkbox" name="france" id="france">
+        </div>
+    </div>
+    <div class="cars">
+
+    </div>
+
     <script src="js/script.js"></script>
 </body>
+
 </html>
