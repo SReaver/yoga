@@ -321,15 +321,12 @@ window.addEventListener("DOMContentLoaded", function () {
 		calcInputs = document.querySelectorAll(".counter-block-input"),
 		place = document.getElementById("select"),
 		totalValue = document.getElementById("total"),
-		personsSum = 0,
-		daysSum = 0,
 		total = 0;
 
 	totalValue.innerHTML = total;
 
 	function totalSumCalc(rst, prs) {
 		if (+rst && +prs) {
-			daysSum = +rst;
 			total = (+rst + +prs) * 4000;
 			totalValue.innerHTML = total * place.options[place.selectedIndex].value;
 		} else {
