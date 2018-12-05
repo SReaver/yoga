@@ -1,5 +1,8 @@
+//let arr = [1, 2, 3, 4, 5];
+//console.log(arr);
+
 let cars = [];
-let wer;
+//let wer;
 // function getData() {
 //     return new Promise(function (resolve, reject) {
 
@@ -10,14 +13,23 @@ request.onreadystatechange = function () {
     if (request.readyState === 4) {
         if (request.status == 200 && request.readyState == 4) {
             //console.log(typeof (request.response));
-            wer = request.response;
+            //wer = request.response;
+            //console.log(cars);
             //console.log(wer);
             //console.log(typeof (request.response));
-            // Object.values(JSON.parse(request.response).cars).forEach(function (item) {
-            //     cars.push(item);
-            // });
-
+            let wer = (JSON.parse(request.response)).cars;
             //console.log(cars);
+
+            wer.forEach(function (item) {
+                cars.push(item);
+            });
+
+            /* JSON.parse(request.response).forEach(function (item) {
+                cars.push(item);
+                console.log(item);
+            });
+*/
+            //console.log(wer[1]);
             // console.log(JSON.parse(request.response));
             //resolve(request.response);
         } else {
@@ -27,8 +39,12 @@ request.onreadystatechange = function () {
     }
 };
 request.send();
-
-console.log(wer);
+for (let i = 0; i < cars.length; i++) {
+    console.log(cars[i]);
+}
+//console.log(cars[1].category);
+//setTimeout(console.log(wer), 5000);
+//console.log(wer);
 //     });
 // }
 /*
