@@ -328,7 +328,7 @@ window.addEventListener("DOMContentLoaded", function () {
 	totalValue.innerHTML = total;
 
 	function totalSumCalc(rst, prs) {
-		if (rst && prs && +prs > 0 && +rst > 0) {
+		if (+rst && +prs) {
 			daysSum = +rst;
 			total = (+rst + +prs) * 4000;
 			totalValue.innerHTML = total * place.options[place.selectedIndex].value;
@@ -345,7 +345,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 	calcInputs.forEach((item) => {
 		item.addEventListener("keypress", (e) => {
-			if (e.key == "+" || e.key == "e" || e.key == "-" || e.key == "." || e.key == ",") {
+			if (/\D/.test(e.key)) {
 				e.preventDefault();
 			}
 		});
