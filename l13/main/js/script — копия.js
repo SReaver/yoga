@@ -175,17 +175,21 @@ window.addEventListener("DOMContentLoaded", function () {
 		item.addEventListener("submit", function (event) {
 			event.preventDefault();
 			item.appendChild(statusMessage);
+
 			let request = new XMLHttpRequest();
 			request.open("POST", "server.php");
 			//request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //закомментировали, чтобы отправлять данные в JSON формате
 			request.setRequestHeader("Content-type", "application/json; charset=utf-8"); // вот так данные отправляются в JSON формате
+
 			let formData = new FormData(item);
+
 			//следующий метод переводит из формата FormData в формат Объекта. А далее уже стандартно омжно перевести в формат JSON
 			let obj = {};
 			formData.forEach(function (value, key) {
 				obj[key] = value;
 			});
 			let json = JSON.stringify(obj);
+
 			//request.send(formData); //отправка используя FormData
 			request.send(json); //отправка используя JSON
 			request.addEventListener("readystatechange", function () {
@@ -243,6 +247,7 @@ window.addEventListener("DOMContentLoaded", function () {
 					request.send(data);
 				});
 			}
+
 
 			function clearInput() {
 				for (let i = 0; i < inputs.length; i++) {
@@ -327,22 +332,33 @@ window.addEventListener("DOMContentLoaded", function () {
 
 	totalValue.innerHTML = total;
 
+	persons.addEventListener("change", function () {
+		totalSumCalc(restDays.value, persons.value);
+	});
+
+	restDays.addEventListener("change", function () {
+		totalSumCalc(restDays.value, persons.value);
+	});
+
 	function totalSumCalc(rst, prs) {
-		if (rst && prs && +prs > 0 && +rst > 0) {
+		if (rst && prs) {
 			daysSum = +rst;
 			total = (+rst + +prs) * 4000;
-			totalValue.innerHTML = total * place.options[place.selectedIndex].value;
+			//totalValue.innerHTML = total;
+			animateTotalSum(totalValue.innerHTML, total);
+			console.log("totalValue = " + totalValue.innerHTML);
 		} else {
 			totalValue.innerHTML = 0;
 		}
 	}
-
-	[persons, restDays, place].forEach((item) => {
-		item.addEventListener("change", () => {
-			totalSumCalc(restDays.value, persons.value);
-		});
+	place.addEventListener("change", function () {
+		if (restDays.value == "" || persons.value == "") {
+			totalValue.innerHTML = 0;
+		} else {
+			let a = total;
+			totalValue.innerHTML = a * this.options[this.selectedIndex].value;
+		}
 	});
-
 	calcInputs.forEach((item) => {
 		item.addEventListener("keypress", (e) => {
 			if (e.key == "+" || e.key == "e" || e.key == "-" || e.key == "." || e.key == ",") {
@@ -350,4 +366,24 @@ window.addEventListener("DOMContentLoaded", function () {
 			}
 		});
 	});
+
+	function animateTotalSum(start, end) {
+		if (!end) {
+			end = 0;
+		}
+		console.log(start + "-" + end);
+		var range = end - start;
+		var current = start;
+		var increment = end > start ? 1 : -1;
+		var stepTime = Math.abs(Math.floor(2000 / range));
+		//var obj = document.getElementById(id);
+		var timer = setInterval(function () {
+			current += increment;
+			totalValue.innerHTML = current;
+			if (current == end) {
+				clearInterval(timer);
+			}
+		}, stepTime);
+	}
+
 });
