@@ -1,7 +1,8 @@
 //let arr = [1, 2, 3, 4, 5];
 //console.log(arr);
 
-let cars = [];
+let carz = [];
+let ttt = 1;
 //let wer;
 // function getData() {
 //     return new Promise(function (resolve, reject) {
@@ -18,11 +19,13 @@ request.onreadystatechange = function () {
             //console.log(wer);
             //console.log(typeof (request.response));
             //console.log(cars);
-            console.log(JSON.parse(request.response));
-            (JSON.parse(request.response)).cars.Object.values.forEach(function (item) {
-                cars.push(item);
+            //console.log(JSON.parse(request.response));
+            (JSON.parse(request.response)).cars.forEach(function (item) {
+                carz.push(item);
+                ttt++;
             });
-
+            ttt = request.response;
+            console.log(ttt);
             /* JSON.parse(request.response).forEach(function (item) {
                 cars.push(item);
                 console.log(item);
@@ -36,8 +39,12 @@ request.onreadystatechange = function () {
             console.log(request.response);
         }
     }
+    request.send();
 };
-request.send();
+
+console.log(carz);
+console.log(carz[0]);
+console.log(ttt);
 
 //console.log(cars[0]);
 //console.log(cars);
