@@ -280,42 +280,25 @@ window.addEventListener("DOMContentLoaded", function () {
 		}
 
 		slides.forEach((item) => {
-			//console.log("width: " + item.childNodes[1].width);
-			//console.log("height: " + item.childNodes[1].height);
-			//console.log(item);
-			//console.log(item.offsetHeight);
-			//slideAnimate(item);
 			item.style.display = "none";
-
 		});
 		dots.forEach((item) => {
 			item.classList.remove("dot-active");
 		});
-		//slides[slideIndex - 1].style.display = "block";
 		slideAnimate(slides[slideIndex - 1]);
 		dots[slideIndex - 1].classList.add("dot-active");
 	}
 
 	function slideAnimate(item) {
 		item.style.display = "block";
-		//let width = item.childNodes[1].width;
-		//let width = item.offsetWidth;
 		let left = -1000;
-		//let height = item.offsetHeight;
-		//console.log(item);
-		//console.log(width + "*" + height);
 
 		function step() {
 			if (left == 0) {
 				cancelAnimationFrame(step);
-				//item.style.display = "none";
 			} else {
-				//width++;
 				left = left + 50;
-				//width -= 50;
-				//height -= 50;
 				item.style.left = left + "px";
-				//item.style.height = height + "px";
 				requestAnimationFrame(step);
 			}
 		}
