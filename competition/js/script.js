@@ -18,7 +18,8 @@ request.onreadystatechange = function () {
             //console.log(wer);
             //console.log(typeof (request.response));
             //console.log(cars);
-            (JSON.parse(request.response)).cars.forEach(function (item) {
+            console.log(JSON.parse(request.response));
+            (JSON.parse(request.response)).cars.Object.values.forEach(function (item) {
                 cars.push(item);
             });
 
@@ -38,12 +39,12 @@ request.onreadystatechange = function () {
 };
 request.send();
 
-console.log(cars[0]);
-console.log(cars);
+//console.log(cars[0]);
+//console.log(cars);
 
-cars.forEach(function (item) {
-    console.log("item: " + item);
-});
+// cars.forEach(function (item) {
+//     console.log("item: " + item);
+// });
 
 // for (let i = 0; i < cars.length; i++) {
 //     console.log(cars[i]);

@@ -160,13 +160,14 @@ window.addEventListener("DOMContentLoaded", function () {
 	//проверка на ввод цифр и плюса в поле телефона
 	inputs.forEach(function (item) {
 		if (item.type == "tel") {
-			item.addEventListener("keydown", function (e) {
-				if (!/\d|\+/gm.test(e.key) && e.keyCode != 8) {
+			item.addEventListener("keypress", function (e) {
+				if ((!/\d|\+/gm.test(e.key) && e.keyCode != 8) || item.value.length >= 12 && e.keyCode != 8) {
 					e.preventDefault();
 				}
-				if (item.value.indexOf("+") != -1 && e.key == "+") {
+				if (e.key == '+' && item.value.length > 0) {
 					e.preventDefault();
 				}
+
 			});
 		}
 	});
@@ -246,8 +247,27 @@ window.addEventListener("DOMContentLoaded", function () {
 				}
 			}
 			postData(formData).then(() => statusMessage.innerHTML = message.loading)
-				.then(() => statusMessage.innerHTML = message.success)
-				.catch(() => statusMessage.innerHTML = message.failure)
+				.then(() => {
+					statusMessage.innerHTML = "";
+					let success = document.createElement("img");
+					success.src = "img/Commons-emblem-success.svg";
+					success.width = 48;
+					success.height = 48;
+					statusMessage.appendChild(success);
+					setTimeout(function () {
+						statusMessage.innerHTML = "";
+					}, 5000);
+				})
+				.catch(() => {
+					statusMessage.innerHTML = "";
+					let alarm = document.createElement("img");
+					alarm.src = "img/alarmforesthumour.jpg";
+					alarm.width = 200;
+					statusMessage.appendChild(alarm);
+					setTimeout(function () {
+						statusMessage.innerHTML = "";
+					}, 5000);
+				})
 				.then(() => clearInput());
 		});
 	});
