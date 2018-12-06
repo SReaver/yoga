@@ -17,10 +17,8 @@ request.onreadystatechange = function () {
             //console.log(cars);
             //console.log(wer);
             //console.log(typeof (request.response));
-            let wer = (JSON.parse(request.response)).cars;
             //console.log(cars);
-
-            wer.forEach(function (item) {
+            (JSON.parse(request.response)).cars.forEach(function (item) {
                 cars.push(item);
             });
 
@@ -42,6 +40,10 @@ request.send();
 
 console.log(cars[0]);
 console.log(cars);
+
+cars.forEach(function (item) {
+    console.log("item: " + item);
+});
 
 // for (let i = 0; i < cars.length; i++) {
 //     console.log(cars[i]);
