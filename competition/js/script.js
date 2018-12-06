@@ -39,9 +39,13 @@ request.onreadystatechange = function () {
     }
 };
 request.send();
-for (let i = 0; i < cars.length; i++) {
-    console.log(cars[i]);
-}
+
+console.log(cars[0]);
+console.log(cars);
+
+// for (let i = 0; i < cars.length; i++) {
+//     console.log(cars[i]);
+// }
 //console.log(cars[1].category);
 //setTimeout(console.log(wer), 5000);
 //console.log(wer);

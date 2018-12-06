@@ -378,7 +378,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		var stepTime = Math.abs(Math.floor(2000 / range));
 		//var obj = document.getElementById(id);
 		var timer = setInterval(function () {
-			current += increment;
+			current = increment;
 			totalValue.innerHTML = current;
 			if (current == end) {
 				clearInterval(timer);

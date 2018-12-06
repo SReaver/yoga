@@ -230,14 +230,10 @@ window.addEventListener("DOMContentLoaded", function () {
 					request.open("POST", "server.php");
 					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 					request.onreadystatechange = function () {
-						if (request.readyState < 4) {
+						if (request.status == 200 && request.readyState == 4) {
 							resolve();
-						} else if (request.readyState === 4) {
-							if (request.status == 200 && request.readyState == 4) {
-								resolve();
-							} else {
-								reject();
-							}
+						} else {
+							reject();
 						}
 					};
 					request.send(data);
@@ -266,8 +262,8 @@ window.addEventListener("DOMContentLoaded", function () {
 			});
 		});
 	});
-	//Slider
 
+	//Slider
 	let slideIndex = 1,
 		slides = document.querySelectorAll('.slider-item'),
 		prev = document.querySelector(".prev"),
@@ -284,13 +280,46 @@ window.addEventListener("DOMContentLoaded", function () {
 		}
 
 		slides.forEach((item) => {
+			//console.log("width: " + item.childNodes[1].width);
+			//console.log("height: " + item.childNodes[1].height);
+			//console.log(item);
+			//console.log(item.offsetHeight);
+			//slideAnimate(item);
 			item.style.display = "none";
+
 		});
 		dots.forEach((item) => {
 			item.classList.remove("dot-active");
 		});
-		slides[slideIndex - 1].style.display = "block";
+		//slides[slideIndex - 1].style.display = "block";
+		slideAnimate(slides[slideIndex - 1]);
 		dots[slideIndex - 1].classList.add("dot-active");
+	}
+
+	function slideAnimate(item) {
+		item.style.display = "block";
+		//let width = item.childNodes[1].width;
+		//let width = item.offsetWidth;
+		let left = -1000;
+		//let height = item.offsetHeight;
+		//console.log(item);
+		//console.log(width + "*" + height);
+
+		function step() {
+			if (left == 0) {
+				cancelAnimationFrame(step);
+				//item.style.display = "none";
+			} else {
+				//width++;
+				left = left + 50;
+				//width -= 50;
+				//height -= 50;
+				item.style.left = left + "px";
+				//item.style.height = height + "px";
+				requestAnimationFrame(step);
+			}
+		}
+		requestAnimationFrame(step);
 	}
 
 	function plusSlides(n) {
@@ -324,11 +353,24 @@ window.addEventListener("DOMContentLoaded", function () {
 		total = 0;
 
 	totalValue.innerHTML = total;
-
+	//функция анимации чисел
+	function animateTotalSum(startCount, endCount, element) {
+		let totalValue = startCount;
+		let increament = totalValue < endCount ? 100 : -100;
+		let timer = setInterval(function () {
+			totalValue += increament;
+			element.innerHTML = totalValue;
+			if (totalValue == endCount) {
+				clearInterval(timer);
+			}
+		}, 1);
+	}
+	//Функция подсчёта итоговой суммы
 	function totalSumCalc(rst, prs) {
 		if (+rst && +prs) {
 			total = (+rst + +prs) * 4000;
-			totalValue.innerHTML = total * place.options[place.selectedIndex].value;
+			//totalValue.innerHTML = total * place.options[place.selectedIndex].value;
+			animateTotalSum(+totalValue.innerHTML, total * place.options[place.selectedIndex].value, totalValue);
 		} else {
 			totalValue.innerHTML = 0;
 		}
@@ -339,7 +381,7 @@ window.addEventListener("DOMContentLoaded", function () {
 			totalSumCalc(restDays.value, persons.value);
 		});
 	});
-
+	//провека ввода только цифр
 	calcInputs.forEach((item) => {
 		item.addEventListener("keypress", (e) => {
 			if (/\D/.test(e.key)) {
