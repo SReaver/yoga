@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		form = require("./parts/form.js"),
 		modal = require("./parts/modal.js"),
 		slider = require("./parts/slider.js"),
-		smoothscrolling = require("./parts/smoothscroll.js"),
+		smoothscroll = require("./parts/smoothscroll.js"),
 		tabs = require("./parts/tabs.js"),
 		timer = require("./parts/timer.js");
 	calc();
