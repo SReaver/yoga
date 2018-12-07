@@ -4,29 +4,29 @@ function modal() {
   close = document.querySelector(".popup-close"),
   description = document.querySelectorAll(".description-btn");
 
- more.addEventListener("click", function () { //из-за контекста вызова лучше не менять
+ more.addEventListener("click", function () {
   modal.call(this);
  });
 
- description.forEach(function (item) { //из-за контекста вызова лучше не менять
+ description.forEach(function (item) {
   item.addEventListener("click", function () {
    modal.call(this);
   });
  });
 
 
- function modal() { //из-за контекста вызова лучше не менять
+ function modal() {
   overlay.style.display = "block";
   this.classList.add("more-splash");
   document.body.style.overflow = "hidden";
   if (window.screen.width > 992) {
-   //проверка на браузер от MS
+
    if (navigator.userAgent.match(/Edge/i) || navigator.userAgent.match(/Trident.*rv[ :]*11\./i)) {
     overlay.classList.add('fade');
-    //console.log("MS");
+
    } else {
     animate(overlay);
-    //console.log("Not MS");
+
    }
   }
  }
@@ -37,7 +37,6 @@ function modal() {
   document.body.style.overflow = "";
  });
 
- //additional animation of Modal
 
  function animate(element) {
   let op = 0;

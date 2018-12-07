@@ -5,8 +5,8 @@ window.addEventListener("DOMContentLoaded", function () {
 		info = document.querySelector(".info-header"),
 		tabContent = document.querySelectorAll(".info-tabcontent");
 
-	function hideTabContent(a) {
-		//let hideTabContent = (a) => {
+
+	let hideTabContent = (a) => {
 		for (let i = a; i < tabContent.length; i++) {
 			tabContent[i].classList.remove("show");
 			tabContent[i].classList.add("hide");
@@ -15,16 +15,15 @@ window.addEventListener("DOMContentLoaded", function () {
 
 	hideTabContent(1);
 
-	function showTabContent(b) {
-		//let showTabContent = (b) => {
+
+	let showTabContent = (b) => {
 		if (tabContent[b].classList.contains("hide")) {
 			tabContent[b].classList.remove("hide");
 			tabContent[b].classList.add("show");
 		}
 	};
 
-	info.addEventListener("click", function (event) {
-		//info.addEventListener("click", (event) => {
+	info.addEventListener("click", (event) => {
 		let target = event.target;
 		if (target && target.classList.contains("info-header-tab")) {
 			for (let i = 0; i < tab.length; i++) {
@@ -37,8 +36,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		}
 	});
 	//timer
-	function addZeroToDate(date) {
-		//let addZeroToDate = (date) => {
+	let addZeroToDate = (date) => {
 		if (date.toString().length == 1) {
 			return "0" + date.toString();
 		} else {
@@ -47,8 +45,7 @@ window.addEventListener("DOMContentLoaded", function () {
 	};
 	let deadline = "2018-12-12";
 
-	function getTimeRemaining(endtime) {
-		//let getTimeRemaining = (endtime) => {
+	let getTimeRemaining = (endtime) => {
 
 		let t = Date.parse(endtime) - Date.parse(new Date()),
 			seconds = Math.floor((t / 1000) % 60),
@@ -64,8 +61,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		};
 	};
 
-	function setClock(id, endtime) {
-		//let setClock = (id, endtime) => {
+	let setClock = (id, endtime) => {
 		let timer = document.getElementById(id),
 			hours = timer.querySelector(".hours"),
 			minutes = timer.querySelector(".minutes"),
@@ -73,7 +69,7 @@ window.addEventListener("DOMContentLoaded", function () {
 			timeInterval = setInterval(updateClock, 1000);
 
 		function updateClock() {
-			//let updateClock = () => { лучше оставить старый вариант, иначе придётся менять местами объявление переменных
+
 			let t = getTimeRemaining(endtime);
 			hours.textContent = addZeroToDate(t.hours);
 			minutes.textContent = addZeroToDate(t.minutes);
@@ -95,29 +91,29 @@ window.addEventListener("DOMContentLoaded", function () {
 		close = document.querySelector(".popup-close"),
 		description = document.querySelectorAll(".description-btn");
 
-	more.addEventListener("click", function () { //из-за контекста вызова лучше не менять
+	more.addEventListener("click", function () {
 		modal.call(this);
 	});
 
-	description.forEach(function (item) { //из-за контекста вызова лучше не менять
+	description.forEach(function (item) {
 		item.addEventListener("click", function () {
 			modal.call(this);
 		});
 	});
 
 
-	function modal() { //из-за контекста вызова лучше не менять
+	function modal() {
 		overlay.style.display = "block";
 		this.classList.add("more-splash");
 		document.body.style.overflow = "hidden";
 		if (window.screen.width > 992) {
-			//проверка на браузер от MS
+
 			if (navigator.userAgent.match(/Edge/i) || navigator.userAgent.match(/Trident.*rv[ :]*11\./i)) {
 				overlay.classList.add('fade');
-				//console.log("MS");
+
 			} else {
 				animate(overlay);
-				//console.log("Not MS");
+
 			}
 		}
 	}
@@ -173,53 +169,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		}
 	});
 
-	/*[form, formContact].forEach(function (item) {
-		item.addEventListener("submit", function (event) {
-			event.preventDefault();
-			item.appendChild(statusMessage);
-			let request = new XMLHttpRequest();
-			request.open("POST", "server.php");
-			//request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //закомментировали, чтобы отправлять данные в JSON формате
-			request.setRequestHeader("Content-type", "application/json; charset=utf-8"); // вот так данные отправляются в JSON формате
-			let formData = new FormData(item);
-			//следующий метод переводит из формата FormData в формат Объекта. А далее уже стандартно омжно перевести в формат JSON
-			let obj = {};
-			formData.forEach(function (value, key) {
-				obj[key] = value;
-			});
-			let json = JSON.stringify(obj);
-			//request.send(formData); //отправка используя FormData
-			request.send(json); //отправка используя JSON
-			request.addEventListener("readystatechange", function () {
-				if (request.readyState < 4) {
-					//statusMessage.innerHTML = message.loading;
-					statusMessage.innerHTML = "";
-					let img = document.createElement("img");
-					img.src = "img/ajax-loader.gif";
-					statusMessage.appendChild(img);
-				} else if (request.readyState == 4 && request.status == 200) {
-					statusMessage.innerHTML = "";
-					let success = document.createElement("img");
-					success.src = "img/Commons-emblem-success.svg";
-					success.width = 48;
-					success.height = 48;
-					statusMessage.appendChild(success);
-				} else {
-					//statusMessage.innerHTML = message.failure;
-					statusMessage.innerHTML = "";
-					let alarm = document.createElement("img");
-					alarm.src = "img/alarmforesthumour.jpg";
-					alarm.width = 200;
-					statusMessage.appendChild(alarm);
-				}
-			});
-			for (let i = 0; i < input.length; i++) {
-				input[i].value = "";
-			}
-		});
-	});
-*/
-	//то же самое, но используя промисы
+
 	[form, formContact].forEach(function (item) {
 		item.addEventListener("submit", function (event) {
 			event.preventDefault();
@@ -373,7 +323,7 @@ window.addEventListener("DOMContentLoaded", function () {
 	function totalSumCalc(rst, prs) {
 		if (+rst && +prs) {
 			total = (+rst + +prs) * 4000;
-			//totalValue.innerHTML = total * place.options[place.selectedIndex].value;
+
 			animateTotalSum(+totalValue.innerHTML, total * place.options[place.selectedIndex].value, totalValue);
 		} else {
 			totalValue.innerHTML = 0;
