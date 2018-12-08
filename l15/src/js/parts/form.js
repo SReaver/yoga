@@ -57,11 +57,7 @@ function form() {
         } else {
           e.returnValue = false;
         }
-        if (regFull.test(input.value)) {
-          input.style.backgroundColor = "green";
-        } else if (!regFull.test(input.value)) {
-          input.style.backgroundColor = "";
-        }
+
       });
 
     }

@@ -199,11 +199,6 @@ window.addEventListener("DOMContentLoaded", function () {
 				} else {
 					e.returnValue = false;
 				}
-				if (regFull.test(input.value)) {
-					input.style.backgroundColor = "green";
-				} else if (!regFull.test(input.value)) {
-					input.style.backgroundColor = "";
-				}
 			});
 
 		}
@@ -236,6 +231,7 @@ window.addEventListener("DOMContentLoaded", function () {
 				for (let i = 0; i < inputs.length; i++) {
 					inputs[i].value = "";
 				}
+				this.style.backgroundColor = "";
 			}
 			postData(formData).then(() => statusMessage.innerHTML = message.loading)
 				.then(() => {
