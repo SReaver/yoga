@@ -267,6 +267,10 @@ window.addEventListener("DOMContentLoaded", function () {
 				block: "start",
 				behavior: "smooth"
 			});
+			setTimeout(() => {
+				window.scrollBy(0, -60);
+			}, 1000);
+
 		});
 	});
 
@@ -278,7 +282,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		dotsWrap = document.querySelector(".slider-dots"),
 		dots = document.querySelectorAll(".dot");
 
-	function showSlides(n) {
+	function showSlides(n, pos) {
 		if (n > slides.length) {
 			slideIndex = 1;
 		}
@@ -292,28 +296,42 @@ window.addEventListener("DOMContentLoaded", function () {
 		dots.forEach((item) => {
 			item.classList.remove("dot-active");
 		});
-		slideAnimate(slides[slideIndex - 1]);
+		slideAnimate(slides[slideIndex - 1], pos);
 		dots[slideIndex - 1].classList.add("dot-active");
 	}
 
-	function slideAnimate(item) {
+	function slideAnimate(item, pos) {
 		item.style.display = "block";
 		let left = -1000;
+		let right = 1000;
 
 		function step() {
-			if (left == 0) {
-				cancelAnimationFrame(step);
+			if (pos) {
+				if (left == 0) {
+					cancelAnimationFrame(step);
+				} else {
+					left = left + 50;
+					item.style.left = left + "px";
+				}
 			} else {
-				left = left + 50;
-				item.style.left = left + "px";
-				requestAnimationFrame(step);
+				if (right == 0) {
+					cancelAnimationFrame(step);
+				} else {
+					right = right - 50;
+					item.style.left = right + "px";
+				}
 			}
+			requestAnimationFrame(step);
 		}
 		requestAnimationFrame(step);
 	}
 
 	function plusSlides(n) {
-		showSlides(slideIndex += n);
+		let pos = true;
+		if (n == -1) {
+			pos = false;
+		}
+		showSlides(slideIndex += n, pos);
 	}
 
 	function currentSlide(n) {

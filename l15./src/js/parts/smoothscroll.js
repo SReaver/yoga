@@ -7,6 +7,10 @@ function smoothscroll() {
     block: "start",
     behavior: "smooth"
    });
+   setTimeout(() => {
+    window.scrollBy(0, -60);
+   }, 1000);
+
   });
  });
 }
