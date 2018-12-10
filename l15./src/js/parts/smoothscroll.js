@@ -3,14 +3,11 @@ function smoothscroll() {
  menu.forEach(function (item) {
   item.addEventListener("click", function (event) {
    event.preventDefault();
-   document.querySelector(this.getAttribute("href")).scrollIntoView({
-    block: "start",
+   let elemPos = document.querySelector(this.getAttribute("href")).offsetTop - 60;
+   window.scrollTo({
+    top: elemPos,
     behavior: "smooth"
    });
-   setTimeout(() => {
-    window.scrollBy(0, -60);
-   }, 1000);
-
   });
  });
 }

@@ -263,60 +263,11 @@ window.addEventListener("DOMContentLoaded", function () {
 	menu.forEach(function (item) {
 		item.addEventListener("click", function (event) {
 			event.preventDefault();
-			document.querySelector(this.getAttribute("href")).scrollIntoView({
-				block: "start",
+			let elemPos = document.querySelector(this.getAttribute("href")).offsetTop - 60;
+			window.scrollTo({
+				top: elemPos,
 				behavior: "smooth"
 			});
-			setTimeout(() => {
-				window.scrollBy(0, -60);
-			}, 1000);
-			/*
-						let pos = 0;
-
-
-Element.prototype.documentOffsetTop = function () {
-	return this.offsetTop + (this.offsetParent ? this.offsetParent.documentOffsetTop() : 0);
-};
-
-var top = document.getElementById('middle').documentOffsetTop() - (window.innerHeight / 2);
-window.scrollTo(0, top);
-
-
-
-
-
-
-						function frame() {
-							if (pos == -60) {
-								clearInterval(tid);
-							} else {
-								pos--;
-								window.scrollBy(0, pos);
-							}
-						}
-						let tid = setInterval(frame, 20);
-							setTimeout(function () {
-								let pos = 0;
-								console.log(pos);
-								requestAnimationFrame(step);
-								console.log(pos);
-								window.scrollBy(0, -60);
-
-								function step() {
-									if (pos = -600) {
-										console.log(pos);
-										cancelAnimationFrame(step);
-									} else {
-										pos -= 0.1;
-										console.log(pos);
-										window.scrollBy(0, pos);
-										requestAnimationFrame(step);
-									}
-								}
-
-							}, 1000);*/
-
-
 		});
 	});
 

@@ -154,7 +154,7 @@ eval("\n\nfunction slider() {\n  var slideIndex = 1,\n      slides = document.qu
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nfunction smoothscroll() {\n  var menu = document.querySelectorAll(\"li a\");\n  menu.forEach(function (item) {\n    item.addEventListener(\"click\", function (event) {\n      event.preventDefault();\n      document.querySelector(this.getAttribute(\"href\")).scrollIntoView({\n        block: \"start\",\n        behavior: \"smooth\"\n      });\n      setTimeout(function () {\n        window.scrollBy(0, -60);\n      }, 1000);\n    });\n  });\n}\n\nmodule.exports = smoothscroll;\n\n//# sourceURL=webpack:///./src/js/parts/smoothscroll.js?");
+eval("\n\nfunction smoothscroll() {\n  var menu = document.querySelectorAll(\"li a\");\n  menu.forEach(function (item) {\n    item.addEventListener(\"click\", function (event) {\n      event.preventDefault();\n      var elemPos = document.querySelector(this.getAttribute(\"href\")).offsetTop - 60;\n      window.scrollTo({\n        top: elemPos,\n        behavior: \"smooth\"\n      });\n    });\n  });\n}\n\nmodule.exports = smoothscroll;\n\n//# sourceURL=webpack:///./src/js/parts/smoothscroll.js?");
 
 /***/ }),
 
