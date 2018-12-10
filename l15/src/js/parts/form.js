@@ -70,28 +70,15 @@ function form() {
       item.appendChild(statusMessage);
       let formData = new FormData(item);
 
-      function postData(data) {
-        return new Promise(function (resolve, reject) {
-          let request = new XMLHttpRequest();
-          request.open("POST", "server.php");
-          request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-          request.onreadystatechange = function () {
-            if (request.status == 200 && request.readyState == 4) {
-              resolve();
-            } else {
-              reject();
-            }
-          };
-          request.send(data);
-        });
-      }
-
       function clearInput() {
         for (let i = 0; i < inputs.length; i++) {
           inputs[i].value = "";
         }
       }
-      postData(formData).then(() => statusMessage.innerHTML = message.loading)
+      fetch("server.php", {
+          method: "POST",
+          body: formData
+        })
         .then(() => {
           statusMessage.innerHTML = "";
           let success = document.createElement("img");
